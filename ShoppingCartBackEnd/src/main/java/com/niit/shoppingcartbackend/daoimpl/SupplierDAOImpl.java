@@ -2,6 +2,8 @@ package com.niit.shoppingcartbackend.daoimpl;
 
 import java.util.List;
 
+
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,26 +13,24 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.shoppingcartbackend.dao.SupplierDAO;
 import com.niit.shoppingcartbackend.domain.Supplier;
 import com.niit.shoppingcartbackend.domain.User;
-@Repository("SupplierDAO")
+@Repository("supplierDAO")
 @Transactional
 public class SupplierDAOImpl implements SupplierDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public SupplierDAOImpl(){
-		
-	                    }
-	
-	//write user defined constructor with one parameter i.e. sessionFactory
-	public SupplierDAOImpl(SessionFactory sessionFactory)
-	{
-		this.sessionFactory=sessionFactory;
+	public SupplierDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
-
+    //written user defined constructor with one parameter i.e. sessionFactory
+	
+	SupplierDAOImpl(){}
+	
 	public boolean save(Supplier supplier) {
 		try{
 			sessionFactory.getCurrentSession().save(supplier);

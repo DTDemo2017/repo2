@@ -26,8 +26,7 @@ public class MycartDAOTestCase {
 	public static void initialize()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.niit.dao");
-		context.scan("com.niit.domain");
+		context.scan("com.niit");
 		context.refresh();
 		
 		mycartDAO=(MycartDAO)context.getBean("mycartDAO");
@@ -85,7 +84,7 @@ public class MycartDAOTestCase {
 		
 		int actualSize= mycartDAO.list().size();
 		
-		assertEquals(8,actualSize);
+		assertEquals(2,actualSize);
 		
 	}	
 	

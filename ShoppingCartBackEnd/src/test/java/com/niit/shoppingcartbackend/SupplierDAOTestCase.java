@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.shoppingcartbackend.dao.SupplierDAO;
-import com.niit.shoppingcartbackend.dao.UserDAO;
+
 import com.niit.shoppingcartbackend.domain.Supplier;
-import com.niit.shoppingcartbackend.domain.User;
+
 
 
 @SuppressWarnings("deprecation")
@@ -26,8 +26,7 @@ public class SupplierDAOTestCase {
 	public static void initialize()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.niit.dao");
-		context.scan("com.niit.domain");
+		context.scan("com.niit");
 		context.refresh();
 		
 		supplierDAO=(SupplierDAO)context.getBean("supplierDAO");
@@ -40,9 +39,9 @@ public class SupplierDAOTestCase {
 	public void createSupplierTestCase () {
 		
 		
-		supplier.setId("81");
-		supplier.setName("Micromax");
-		supplier.setAddress("Chennai");
+		supplier.setId("82");
+		supplier.setName("Lava International Limited.");
+		supplier.setAddress("Bangalore");
 		
 		boolean flag= supplierDAO.save(supplier);
 		System.out.println(" ");
@@ -54,9 +53,9 @@ public class SupplierDAOTestCase {
 	public void updateSupplierTestCase () {
 		
 		
-		supplier.setId("81");
-		supplier.setName("Micromax Informatics");
-		supplier.setAddress("Chennai");
+		supplier.setId("82");
+		supplier.setName("Lava International Ltd.");
+		supplier.setAddress("Bangalore");
 		
 		boolean flag= supplierDAO.update(supplier);
 		System.out.println(" ");

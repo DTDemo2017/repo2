@@ -4,42 +4,45 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.niit.shoppingcartbackend.domain.User;
+
 @Configuration
 @ComponentScan("com.niit.shoppingcartbackend.*")
 @EnableTransactionManagement
 public class ApplicationContextConfig {
 	@Bean(name = "dataSource")
 	public DataSource getH2DataSource() {
+		BasicDataSource ds= new BasicDataSource();
 
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		//DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			
-		dataSource.setUrl("jdbc:h2:tcp://localhost/~/NIITDB");
+		ds.setUrl("jdbc:h2:tcp://localhost/~/NIITDB");
 
-		dataSource.setDriverClassName("org.h2.Driver");
+		ds.setDriverClassName("org.h2.Driver");
 
-		dataSource.setUsername("sa");
-		dataSource.setPassword("sa");
+		ds.setUsername("sa");
+		ds.setPassword("sa");
 		
 		
-		return dataSource;
+		return ds;
 	}
 	
 	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
-		
+		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-		//properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.hbm2ddl.auto", "update");
+		
 		return properties;
 	}
 
@@ -49,7 +52,6 @@ public class ApplicationContextConfig {
 
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
-		sessionBuilder.addAnnotatedClass(User.class);
 		sessionBuilder.scanPackages("com.niit.shoppingcartbackend.*");
 		return sessionBuilder.buildSessionFactory();
 	}

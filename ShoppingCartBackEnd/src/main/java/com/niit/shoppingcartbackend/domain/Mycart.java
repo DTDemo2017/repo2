@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 @Entity
-@Table(name="MYCART")
+@Table(name="mycart")
 @Component
 public class Mycart {
 	public Mycart(){}

@@ -2,6 +2,8 @@ package com.niit.shoppingcartbackend.daoimpl;
 
 import java.util.List;
 
+
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,27 +12,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcartbackend.dao.MycartDAO;
 import com.niit.shoppingcartbackend.domain.Mycart;
-import com.niit.shoppingcartbackend.domain.User;
-@Repository("MycartDAO")
+
+
+@Repository("mycartDAO")
 @Transactional
 public class MycartDAOImpl implements MycartDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public MycartDAOImpl(){
-		
-	                    }
-	
-	//write user defined constructor with one parameter i.e. sessionFactory
-	public MycartDAOImpl(SessionFactory sessionFactory)
-	{
-		this.sessionFactory=sessionFactory;
+	public MycartDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
-
+//written user defined constructor with one parameter i.e. sessionFactory
+	
+    MycartDAOImpl(){}
 	public boolean save(Mycart mycart) {
 		try{
 			sessionFactory.getCurrentSession().save(mycart);

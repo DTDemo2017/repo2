@@ -27,8 +27,7 @@ public class UserDAOTestCase {
 	public static void initialize()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.niit.dao");
-		context.scan("com.niit.domain");
+		context.scan("com.niit");
 		context.refresh();
 		
 		userDAO=(UserDAO)context.getBean("userDAO");
@@ -42,9 +41,9 @@ public class UserDAOTestCase {
 		
 		
 		user.setId("suveen");
-		user.setName("Suveen Kumar");
+		user.setName("Suveen");
 		user.setPassword("suveen");
-		user.setContact("DilshukNagar");
+		user.setContact("9836264560");
 		user.setRole("ROLE_USER");
 		boolean flag= userDAO.save(user);
 		System.out.println(" ");
@@ -58,21 +57,21 @@ public class UserDAOTestCase {
 		
 		
 		user.setId("suveen");
-		user.setName("Suveen Kumar");
+		user.setName("Suveen");
 		user.setPassword("suveen");
-		user.setContact("8888888888");
-		user.setRole("ROLE_USER");
+		user.setContact("9836264560");
+		user.setRole("USER_ROLE");
 		boolean flag= userDAO.update(user);
 		System.out.println(" ");
 		
 		assertEquals("updateUserTestCase",true,flag);
 		
-	}	
+	}
 	
 	@Test
 	public void validateUserTestCase () {
 		
-		boolean flag=userDAO.validate("jayesh", "jayesh");
+		boolean flag=userDAO.validate("kiran", "kiran");
 		
 		assertEquals(true,flag);
 		
@@ -83,7 +82,7 @@ public class UserDAOTestCase {
 		
 		int actualSize= userDAO.list().size();
 		
-		assertEquals(12,actualSize);
+		assertEquals(3,actualSize);
 		
 	}	
 	

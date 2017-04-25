@@ -5,8 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
+
 
 import org.springframework.stereotype.Component;
 
@@ -22,8 +22,8 @@ public class User {
 	private String id;
 	@Column(name="name")//if field name in table and property name in class different
 	private String name;
-	@Min(5)
-	@Max(15)
+	
+	
 	private String password;//We have defined all properties for all fields in table.
 	private String contact;
 	private String role;
@@ -59,9 +59,6 @@ public class User {
 		this.role = role;
 	}
 	
-	public String toString(){
-		return id+ ":" +name+ ":" +password+ ":" +contact+ ":" +role;
-	}
 	
 	
 

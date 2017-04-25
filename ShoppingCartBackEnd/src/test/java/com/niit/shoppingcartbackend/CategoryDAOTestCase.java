@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.shoppingcartbackend.dao.CategoryDAO;
-import com.niit.shoppingcartbackend.dao.UserDAO;
+
 import com.niit.shoppingcartbackend.domain.Category;
-import com.niit.shoppingcartbackend.domain.User;
+
 
 
 
@@ -30,8 +30,7 @@ public class CategoryDAOTestCase {
 	public static void initialize(){
 	
 	context= new AnnotationConfigApplicationContext();
-	context.scan("com.niit.dao");
-	context.scan("com.niit.domain");
+	context.scan("com.niit");
 	context.refresh();
 	
 	categoryDAO=(CategoryDAO)context.getBean("categoryDAO");
@@ -44,9 +43,9 @@ public class CategoryDAOTestCase {
 	public void createCategoryTestCase () {
 		
 		
-		category.setId("02");
-		category.setName("Mobile ");
-		category.setDescription("This is mobile");
+		category.setId("03");
+		category.setName("Refrigerator");
+		category.setDescription("This is refrigerator.");
 		
 		boolean flag= categoryDAO.save(category);
 		System.out.println(" ");
@@ -59,16 +58,16 @@ public class CategoryDAOTestCase {
 	public void updateCategoryTestCase () {
 		
 		
-		category.setId("02");
-		category.setName("Mobile phone");
-		category.setDescription("This is mobile product .");
+		category.setId("03");
+		category.setName("Refrigerator");
+		category.setDescription("This is refrigerator product .");
 		
 		boolean flag= categoryDAO.update(category);
 		System.out.println(" ");
 		
 		assertEquals("updateCategoryTestCase",true,flag);
 		
-	}	
+	}
 	
 	@Test
 	public void validateCategoryTestCase () {
@@ -84,7 +83,7 @@ public class CategoryDAOTestCase {
 		
 		int actualSize= categoryDAO.list().size();
 		
-		assertEquals(5,actualSize);
+		assertEquals(3,actualSize);
 		
 	}	
 }

@@ -27,8 +27,7 @@ public class ProductDAOTestCase {
 	public static void initialize()
 	{
 		context= new AnnotationConfigApplicationContext();
-		context.scan("com.niit.dao");
-		context.scan("com.niit.domain");
+		context.scan("com.niit");
 		context.refresh();
 		
 		productDAO=(ProductDAO)context.getBean("productDAO");
@@ -41,35 +40,35 @@ public class ProductDAOTestCase {
 	public void createProductTestCase () {
 		
 		
-		product.setId("13");
-		product.setName("TV");
-		product.setDescription("This is Television .");
-		product.setPrice("50000");
-		product.setCategory_id("01");
+		product.setId("14");
+		product.setName("Refrigerator");
+		product.setDescription("This is refrigerator .");
+		product.setPrice("80000");
+		product.setCategory_id("03");
 		product.setSupplier_id("80");
 		boolean flag= productDAO.save(product);
 		System.out.println(" ");
 		
 		assertEquals("createProductTestCase",true,flag);
 		
-	}	
+	}
 	
 	@Test
 	public void updateProductTestCase () {
 		
 		
-		product.setId("13");
-		product.setName("TV");
-		product.setDescription("This is television product.");
-		product.setPrice("50000");
-		product.setCategory_id("01");
+		product.setId("14");
+		product.setName("Refrigerator");
+		product.setDescription("This is refrigerator product.");
+		product.setPrice("80000");
+		product.setCategory_id("03");
 		product.setSupplier_id("80");
 		boolean flag= productDAO.update(product);
 		System.out.println(" ");
 		
 		assertEquals("updateProductTestCase",true,flag);
 		
-	}	
+	}
 	
 	@Test
 	public void validateProductTestCase () {
@@ -85,7 +84,7 @@ public class ProductDAOTestCase {
 		
 		int actualSize= productDAO.list().size();
 		
-		assertEquals(7,actualSize);
+		assertEquals(3,actualSize);
 		
 	}	
 	

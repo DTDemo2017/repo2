@@ -12,13 +12,19 @@ public interface CategoryDAO {
 		//2)update the category details -update
 		public boolean update(Category category);
 		
+		//3)delete
+		public boolean delete(String id);
+		
 		//3)validate the credentials -validate
 		public boolean validate(String id, String name);
 		
-		//4)get all users-list
+		//4)get all categories-list
 		public List<Category> list();
 		
-		//5)get user details based on userID
-		public Category get(String id);
+		//5)get category details based on ID
+		public Category getCategoryByID(String id);
+		
+		//6)get category details based on name
+		public Category getCategoryByName(String name);
 
 }

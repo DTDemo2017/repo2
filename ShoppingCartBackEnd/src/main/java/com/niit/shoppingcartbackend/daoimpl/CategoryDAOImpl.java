@@ -2,7 +2,10 @@ package com.niit.shoppingcartbackend.daoimpl;
 
 import java.util.List;
 
+
+
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,32 +14,39 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.shoppingcartbackend.dao.CategoryDAO;
 import com.niit.shoppingcartbackend.domain.Category;
 import com.niit.shoppingcartbackend.domain.User;
-@Repository("CategoryDAO")
+@Repository("categoryDAO")
 @Transactional
 public class CategoryDAOImpl implements CategoryDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public CategoryDAOImpl(){
-		
-	                    }
-	
-	//write user defined constructor with one parameter i.e. sessionFactory
-	public CategoryDAOImpl(SessionFactory sessionFactory)
-	{
-		this.sessionFactory=sessionFactory;
+	public CategoryDAOImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
+	//written user defined constructor with one parameter i.e. sessionFactory
+	
+	CategoryDAOImpl(){}
+	
+	private Session getCurrentSession()
+	{
+		return sessionFactory.getCurrentSession();
+	}
+
+	
+	
+	
 
 	public boolean save(Category category) {
 		try{
-			sessionFactory.getCurrentSession().save(category);
+			getCurrentSession().save(category);
 		}
-		catch(Exception e){
-			e.printStackTrace();
+		catch(Exception ex){
+			ex.printStackTrace();
 			return false;
 		}
 		return true;
@@ -44,13 +54,25 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	public boolean update(Category category) {
 		try{
-			sessionFactory.getCurrentSession().update(category);
+			getCurrentSession().update(category);
 		}
-		catch(Exception e){
-			e.printStackTrace();
+		catch(Exception ex){
+			ex.printStackTrace();
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean delete(String id) {
+		try{
+			getCurrentSession().delete(getCategoryByID(id));
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+		
 	}
 
 	public boolean validate(String id, String name) {
@@ -70,11 +92,21 @@ public class CategoryDAOImpl implements CategoryDAO {
 	}
 
 	public List<Category> list() {
-		return	sessionFactory.getCurrentSession().createQuery("from Category").list();
+		return getCurrentSession().createQuery("from Category").list();
 	}
 
-	public Category get(String id) {
-		return (Category)sessionFactory.getCurrentSession().get(Category.class, id);
+	
+
+	public Category getCategoryByID(String id) {
+		return(Category)getCurrentSession().get(Category.class, id);
+		//select * from category where id= ?
+	}
+
+	public Category getCategoryByName(String name) {
+		return(Category)getCurrentSession().createQuery("from Category where name= ?")
+				.setString(0, name).uniqueResult();
+		
+		
 	}
 
 }
