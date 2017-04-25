@@ -7,7 +7,16 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>ShoppingCartFrontEnd Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
+  
+  
   <dependencies>
+  <!-- ShoppingCartBackEnd dependency -->
+  <dependency>
+  <groupId>com.niit</groupId>
+  <artifactId>ShoppingCartBackEnd</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -19,33 +28,31 @@
     <artifactId>jstl</artifactId>
     <version>1.2</version>
 </dependency>
-    
-    <dependency>
+<dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>
     <version>3.1.0</version>
 </dependency>
-    <dependency>
+<dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-core</artifactId>
     <version>4.1.6.RELEASE</version>
 </dependency>
-    <dependency>
+<dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-context</artifactId>
     <version>4.1.6.RELEASE</version>
 </dependency>
-   <dependency>
+<dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-webmvc</artifactId>
     <version>4.1.6.RELEASE</version>
 </dependency>
-   <dependency>
+<dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-web</artifactId>
     <version>4.1.6.RELEASE</version>
 </dependency>
-    
   </dependencies>
   <build>
     <finalName>ShoppingCartFrontEnd</finalName>
