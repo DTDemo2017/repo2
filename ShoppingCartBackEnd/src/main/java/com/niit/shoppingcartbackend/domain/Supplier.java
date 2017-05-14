@@ -1,8 +1,12 @@
 package com.niit.shoppingcartbackend.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -15,38 +19,56 @@ public class Supplier {
 		
 	                 }
 	@Id
-	@Column(name="id")
-	private String id;
+	@Column(name="supplierid")
+	private String supplierid;
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="suppliername")
+	private String suppliername;
 	
-	@Column(name="address")
-	private String address;
-
-	public String getId() {
-		return id;
+	@Column(name="supplieraddress")
+	private String supplieraddress;
+	
+	@OneToMany(mappedBy="productsupplier", fetch=FetchType.EAGER)
+	List<Product> products;
+	
+	
+	public String getSupplierid() {
+		return supplierid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setSupplierid(String supplierid) {
+		this.supplierid = supplierid;
 	}
 
-	public String getName() {
-		return name;
+	public String getSuppliername() {
+		return suppliername;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setSuppliername(String suppliername) {
+		this.suppliername = suppliername;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getSupplieraddress() {
+		return supplieraddress;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setSupplieraddress(String supplieraddress) {
+		this.supplieraddress = supplieraddress;
 	}
+
+	
+	
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	
+	
+
 	
 	
 

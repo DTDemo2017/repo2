@@ -3,9 +3,15 @@ package com.niit.shoppingcartbackend.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
 
 @Entity
 @Table(name="product")
@@ -13,52 +19,144 @@ import org.springframework.stereotype.Component;
 public class Product {
 	public Product(){}
 	@Id
-	@Column(name="id")
-	private String id;
+	@Column(name="productid")
+	private String productid;
 	
-	private String name;
-	private String description;
-	private String price;
-	private String category_id;
-	private String supplier_id;
+	private String productname;
+	private String productdescription;
+	private String productprice;
+
 	
 	
-	public String getId() {
-		return id;
+
+	private String categoryid;
+	private String supplierid;
+	
+	
+	
+	@ManyToOne
+	@JoinColumn(name="categoryid", updatable=false, insertable=false, nullable=false)
+	private Category productcategory;
+	
+	@ManyToOne
+	@JoinColumn(name="supplierid", updatable=false, insertable=false, nullable=false)
+	private Supplier productsupplier;
+	
+	
+	@Transient
+	private MultipartFile image;
+	
+	private String productimage;
+	
+	
+	
+	
+	public String getProductid() {
+		return productid;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+	public void setProductid(String productid) {
+		this.productid = productid;
 	}
-	public String getName() {
-		return name;
+
+	public String getProductname() {
+		return productname;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setProductname(String productname) {
+		this.productname = productname;
 	}
-	public String getDescription() {
-		return description;
+
+	public String getProductdescription() {
+		return productdescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setProductdescription(String productdescription) {
+		this.productdescription = productdescription;
 	}
-	public String getPrice() {
-		return price;
+
+	public String getProductprice() {
+		return productprice;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+
+	public void setProductprice(String productprice) {
+		this.productprice = productprice;
 	}
-	public String getCategory_id() {
-		return category_id;
+	
+	
+
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+	
+
+	public String getCategoryid() {
+		return categoryid;
 	}
-	public void setCategory_id(String category_id) {
-		this.category_id = category_id;
+
+	public void setCategoryid(String categoryid) {
+		this.categoryid = categoryid;
 	}
-	public String getSupplier_id() {
-		return supplier_id;
+
+	public String getSupplierid() {
+		return supplierid;
 	}
-	public void setSupplier_id(String supplier_id) {
-		this.supplier_id = supplier_id;
+
+	public void setSupplierid(String supplierid) {
+		this.supplierid = supplierid;
 	}
+
+	
+	
+	public Category getProductcategory() {
+		return productcategory;
+	}
+
+	public void setProductcategory(Category productcategory) {
+		this.productcategory = productcategory;
+	}
+
+	public Supplier getProductsupplier() {
+		return productsupplier;
+	}
+
+	public void setProductsupplier(Supplier productsupplier) {
+		this.productsupplier = productsupplier;
+	}
+
+	
+	
+	public MultipartFile getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	
+	
+	
+	public String getProductimage() {
+		return productimage;
+	}
+
+	public void setProductimage(String productimage) {
+		this.productimage = productimage;
+	}
+
+	
+	
+	
+	
+	
 	
 	
 

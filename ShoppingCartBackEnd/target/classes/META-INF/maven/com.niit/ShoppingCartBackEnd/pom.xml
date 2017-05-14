@@ -21,11 +21,18 @@
     <version>4.12</version>
 </dependency>
 
-    <dependency>
+<dependency>
     <groupId>org.slf4j</groupId>
     <artifactId>slf4j-api</artifactId>
     <version>1.7.1</version>
 </dependency>
+  
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.1.7</version>
+</dependency>
+
     
     <dependency>
     <groupId>javax.servlet</groupId>
@@ -45,12 +52,12 @@
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-tx</artifactId>
-    <version>3.1.2.RELEASE</version>
+    <version>4.1.6.RELEASE</version>
 </dependency>
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-jdbc</artifactId>
-    <version>3.0.3.RELEASE</version>
+    <version>4.1.6.RELEASE</version>
 </dependency>
 <dependency>
     <groupId>org.springframework</groupId>
@@ -62,6 +69,7 @@
     <artifactId>spring-test</artifactId>
     <version>4.1.6.RELEASE</version>
 </dependency>
+
 
 <dependency>
       <groupId>org.hibernate</groupId>
@@ -116,7 +124,27 @@
     <artifactId>hibernate-jpa-2.0-api</artifactId>
     <version>1.0.1.Final</version>
 </dependency>
-    
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-core</artifactId>
+    <version>4.0.0.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>4.0.0.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-config</artifactId>
+    <version>4.0.0.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-taglibs</artifactId>
+    <version>4.0.0.RELEASE</version>
+</dependency>
+
     
   </dependencies>
 </project>

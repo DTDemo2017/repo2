@@ -7,7 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-This is Registration Page.
+<h2 style="color:blue">This is Registration Page.</h2>
+<form action="register" method="post">
+<input type="text" name="id">
+<input type="text" name="name">
+<input type="text" name="password">
+<input type="text" name="contact">
+<input type="text" name="role">
+<input type="submit" value="Save User">
+</form>
 
 </body>
 </html>

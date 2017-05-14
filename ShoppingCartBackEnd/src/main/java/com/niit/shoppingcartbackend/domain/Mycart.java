@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,36 +16,52 @@ import org.springframework.stereotype.Component;
 public class Mycart {
 	public Mycart(){}
 	@Id
-	@Column(name="id")
-	private String id;
-	private String user_id;
-	private String product_name;
+	@Column(name="mycartid")
+	
+	private String mycartid;
+	private String userid;
+	private String productname;
 	private String price;
 	private char status;
-	private String quantity;
-	private Date date_added;
+	private int quantity;
+	private Date dateadded;
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	
-	public String getUser_id() {
-		return user_id;
+	
+	public String getMycartid() {
+		return mycartid;
 	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setMycartid(String mycartid) {
+		this.mycartid = mycartid;
 	}
 	
-	public String getProduct_name() {
-		return product_name;
+	
+	public String getUserid() {
+		return userid;
 	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	
+	
+	public String getProductname() {
+		return productname;
+	}
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
+	
+	
+	
+	
+	
+	
+	public Date getDateadded() {
+		return dateadded;
+	}
+	public void setDateadded(Date dateadded) {
+		this.dateadded = dateadded;
+	}
 	public String getPrice() {
 		return price;
 	}
@@ -51,26 +69,24 @@ public class Mycart {
 		this.price = price;
 	}
 	
+	
+	
 	public char getStatus() {
 		return status;
 	}
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	
-	public Date getDate_added() {
-		return date_added;
-	}
-	public void setDate_added(Date date_added) {
-		this.date_added = date_added;
-	}
+	
+	
+	
 	
 	
 

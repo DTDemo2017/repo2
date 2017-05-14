@@ -13,12 +13,18 @@ public interface MycartDAO {
 		public boolean update(Mycart mycart);
 		
 		//3)validate the credentials -validate
-		public boolean validate(String id, String user_id);
+		public boolean validate(String mycartid, String userid);
 		
 		//4)get all mycart-list
 		public List<Mycart> list();
 		
-		//5)get user details based on userID
-		public Mycart get(String id);
+		//5)get user details based on MycartID
+		public Mycart get(String mycartid);
+
+		//6)
+		public List<Mycart> list(String userID);
+
+		//7)
+		public double getTotalAmount(String userID);
 
 }

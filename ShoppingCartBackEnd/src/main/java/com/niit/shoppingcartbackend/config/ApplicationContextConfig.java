@@ -10,10 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.niit.shoppingcartbackend.domain.Category;
+
+import com.niit.shoppingcartbackend.domain.Product;
+import com.niit.shoppingcartbackend.domain.Supplier;
+
+
+
+
 
 
 @Configuration
@@ -52,6 +60,11 @@ public class ApplicationContextConfig {
 
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
+		sessionBuilder.addAnnotatedClass(Product.class);
+		sessionBuilder.addAnnotatedClass(Supplier.class);
+		sessionBuilder.addAnnotatedClass(Category.class);
+	
+		
 		sessionBuilder.scanPackages("com.niit.shoppingcartbackend.*");
 		return sessionBuilder.buildSessionFactory();
 	}

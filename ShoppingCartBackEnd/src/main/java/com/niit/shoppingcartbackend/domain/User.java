@@ -27,6 +27,7 @@ public class User {
 	private String password;//We have defined all properties for all fields in table.
 	private String contact;
 	private String role;
+	private boolean enabled;
 	public String getId() {
 		return id;
 	}
@@ -57,6 +58,14 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 	

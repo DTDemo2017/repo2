@@ -1,9 +1,13 @@
 package com.niit.shoppingcartbackend.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -15,32 +19,58 @@ public class Category {
 		
 	                 }
 	@Id
-	@Column(name="id")
-	private String id;
+	@Column(name="categoryid")
+	private String categoryid;
 	
-	@Column(name="name")
-	private String name;
+	@Column(name="categoryname")
+	private String categoryname;
 	
-	@Column(name="description")
-	private String description;
+	@Column(name="categorydescription")
+	private String categorydescription;
 	
-	public String getId() {
-		return id;
+	@OneToMany(mappedBy="productcategory", fetch=FetchType.EAGER)
+	List<Product> products;
+	
+	
+
+	public String getCategoryid() {
+		return categoryid;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+	public void setCategoryid(String categoryid) {
+		this.categoryid = categoryid;
 	}
-	public String getName() {
-		return name;
+
+	public String getCategoryname() {
+		return categoryname;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setCategoryname(String categoryname) {
+		this.categoryname = categoryname;
 	}
-	public String getDescription() {
-		return description;
+
+	public String getCategorydescription() {
+		return categorydescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setCategorydescription(String categorydescription) {
+		this.categorydescription = categorydescription;
 	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
+	
+
+	
+	
+	
+	
+	
 
 }

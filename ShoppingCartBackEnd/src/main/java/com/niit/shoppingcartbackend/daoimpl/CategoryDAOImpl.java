@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.shoppingcartbackend.dao.CategoryDAO;
 import com.niit.shoppingcartbackend.domain.Category;
-import com.niit.shoppingcartbackend.domain.User;
+
 @Repository("categoryDAO")
 @Transactional
 public class CategoryDAOImpl implements CategoryDAO {
@@ -63,9 +63,9 @@ public class CategoryDAOImpl implements CategoryDAO {
 		return true;
 	}
 	
-	public boolean delete(String id) {
+	public boolean delete(String categoryid) {
 		try{
-			getCurrentSession().delete(getCategoryByID(id));
+			getCurrentSession().delete(getCategoryByCategoryID(categoryid));
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
@@ -75,10 +75,10 @@ public class CategoryDAOImpl implements CategoryDAO {
 		
 	}
 
-	public boolean validate(String id, String name) {
-		Query query= sessionFactory.getCurrentSession().createQuery("from Category where id= ? and name= ?");
-		query.setString(0,  id);
-		query.setString(1,  name);
+	public boolean validate(String categoryid, String categoryname) {
+		Query query= sessionFactory.getCurrentSession().createQuery("from Category where categoryid= ? and categoryname= ?");
+		query.setString(0,  categoryid);
+		query.setString(1,  categoryname);
 		query.uniqueResult();
 		
 		if (query.uniqueResult() ==null)
@@ -97,16 +97,18 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	
 
-	public Category getCategoryByID(String id) {
-		return(Category)getCurrentSession().get(Category.class, id);
-		//select * from category where id= ?
+	public Category getCategoryByCategoryID(String categoryid) {
+		return(Category)getCurrentSession().get(Category.class, categoryid);
+		//select * from category where categoryid= ?
 	}
 
-	public Category getCategoryByName(String name) {
-		return(Category)getCurrentSession().createQuery("from Category where name= ?")
-				.setString(0, name).uniqueResult();
+	public Category getCategoryByCategoryName(String categoryname) {
+		return(Category)getCurrentSession().createQuery("from Category where categoryname= ?")
+				.setString(0, categoryname).uniqueResult();
 		
 		
 	}
+
+	
 
 }
