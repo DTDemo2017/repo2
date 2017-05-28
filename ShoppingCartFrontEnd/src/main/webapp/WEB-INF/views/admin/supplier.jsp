@@ -55,6 +55,9 @@
 <td>${supplier.supplierid}</td>
 <td>${supplier.suppliername}</td>
 <td>${supplier.supplieraddress}</td>
+<%--   <td> <a href="manage_supplier_delete/${supplier.supplierid}"> Delete | </a>   
+	   <a href="manage_supplier_edit/${supplier.supplierid}"> Edit  </a>    </td> --%>
+	   
 
 	   
 <td>

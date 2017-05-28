@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.shoppingcartbackend.dao.CategoryDAO;
 import com.niit.shoppingcartbackend.domain.Category;
 
 
@@ -20,7 +21,7 @@ public class AdminController {
 	
 	//SLF4J->Simple Logging Facade for Java
 	private static Logger log=LoggerFactory.getLogger(AdminController.class);
-	
+	@Autowired CategoryDAO categorydAO;
     @Autowired  Category  category;
 	
 	@Autowired  HttpSession session;
@@ -69,6 +70,21 @@ public class AdminController {
 		log.debug("Starting of the method manageSuppliers");
 		
 		ModelAndView mv = new ModelAndView("Home");
+		
+		if(session.getAttribute("logedInUserID")== null)
+		{
+			//user is not logged in
+			mv.addObject("message", "Please login to do this operation.");
+			return mv;
+		}
+		
+		//check whether the logged-in user role is admin or not
+		
+		if(session.getAttribute("role").equals("ROLE_USER"))
+		{
+			mv.addObject("message", "You are not admin.You cannot perform this operation.");
+			return mv;
+		}
 		mv.addObject("isAdmin", "true");
 		mv.addObject("isAdminClickedSuppliers", "true");
 		
@@ -84,6 +100,22 @@ public class AdminController {
 		log.debug("Starting of the method manageProducts");
 		
 		ModelAndView mv = new ModelAndView("Home");
+		
+		if(session.getAttribute("logedInUserID")== null)
+		{
+			//user is not logged in
+			mv.addObject("message", "Please login to do this operation.");
+			return mv;
+		}
+		
+		//check whether the logged-in user role is admin or not
+		
+		if(session.getAttribute("role").equals("ROLE_USER"))
+		{
+			mv.addObject("message", "You are not admin.You cannot perform this operation.");
+			return mv;
+		}
+		
 		mv.addObject("isAdmin", "true");
 		mv.addObject("isAdminClickedProducts", "true");
 		

@@ -28,7 +28,7 @@ public class Supplier {
 	@Column(name="supplieraddress")
 	private String supplieraddress;
 	
-	@OneToMany(mappedBy="productsupplier", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="supplier", fetch=FetchType.EAGER)
 	List<Product> products;
 	
 	

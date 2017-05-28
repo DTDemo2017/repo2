@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2 style="color:blue">This is Registration Page.</h2>
-<form action="register" method="post">
+<form action="register" method="get">
 <input type="text" name="id">
 <input type="text" name="name">
 <input type="text" name="password">

@@ -15,6 +15,7 @@ import com.niit.shoppingcartbackend.dao.ProductDAO;
 import com.niit.shoppingcartbackend.dao.SupplierDAO;
 import com.niit.shoppingcartbackend.domain.Product;
 import com.niit.shoppingcartbackend.domain.Supplier;
+import java.lang.String;
 
 @Controller
 public class SupplierController {
@@ -58,7 +59,7 @@ public class SupplierController {
 				
 				//if it is does not exist, then only call save method
 				
-				if (supplierdAO.getSupplierBySupplierID(supplierid) !=null)
+				if (supplierdAO.getSupplierBySupplierID(supplierid ) !=null)
 				{
 					//supplier already exist
 					mv.addObject("message", "Supplier already exists with this id " +supplierid);
@@ -116,6 +117,7 @@ public class SupplierController {
 				 
 				 return mv;
 	}
+			
 			//http://localhost:8080/ShoppingCartFrontEnd/manage_supplier_edit/S01
 	           @RequestMapping("/manage_supplier_edit/{supplierid}")
 	           public ModelAndView editSupplier(@PathVariable("supplierid") String supplierid)

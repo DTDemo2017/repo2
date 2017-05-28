@@ -11,8 +11,8 @@
 
 	<c:url var="addAction" value="/manage_product_add?${_csrf.parameterName}=${_csrf.token}"></c:url>
 
-	<form:form action="${addAction}" commandName="product"
-		enctype="multipart/form-data" method="post">
+	 <!-- <form:form action="${addAction}" commandName="product"
+		enctype="multipart/form-data" method="post"> --> 
 		<table>
 			<tr>
 				<td><form:label path="productid">
@@ -34,32 +34,33 @@
 				
 				
 				<td><form:label path="productname">
-						<spring:message text="Name" />
+						<spring:message text="Productname" />
 					</form:label></td>
 				<td><form:input path="productname" required="true" /></td>
 			</tr>
 
 
 			<tr>
-				<td> Price </td>
-				<td><form:input path="productprice" required="true" /></td>
-			</tr>
-
-			<tr>
-				<td>Description> </td>
+				<td> Description </td>
 				<td><form:input path="productdescription" required="true" /></td>
 			</tr>
 
 			<tr>
-				<td>Supplier </td>
-				<td><form:select path="supplier.suppliername" items="${supplierList}"
-						itemValue="suppliername" itemLabel="suppliername" /></td>
+				<td>Price </td>
+				<td><form:input path="productprice" required="true" /></td>
 			</tr>
-			<tr>
+            <tr>
 				<td>Category </td>
-				<td><form:select path="category.categoryname" items="${categoryList}"
+				<td><form:select path="productcategory.categoryname" items="${categoryList}"
 						itemValue="categoryname" itemLabel="categoryname" /></td>
 			</tr>
+			
+			<tr>
+				<td>Supplier </td>
+				<td><form:select path="productsupplier.suppliername" items="${supplierList}"
+						itemValue="suppliername" itemLabel="suppliername" /></td>
+			</tr>
+			
 			<tr>
 				<td align="left"><form:label path="productimage">
 						<spring:message text=" Productimage" />
@@ -102,8 +103,8 @@
 					<td>${product.productname}</td>
 					<td>${product.productdescription}</td>
 					<td>${product.productprice}</td>
-					<td>${product.category.categoryname}</td>
-					<td>${product.supplier.suppliername}</td>
+					<td>${product.category.productcategory}</td>
+					<td>${product.supplier.productsupplier}</td>
 					<td><a href="<c:url value='manage_product_edit/${product.productid}' />">Edit</a></td>
 					<td><a href="<c:url value='manage_product_remove/${product.productid}' />">Delete</a></td>
 				</tr>

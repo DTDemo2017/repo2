@@ -15,9 +15,10 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.shoppingcartbackend.domain.Category;
-
+import com.niit.shoppingcartbackend.domain.Mycart;
 import com.niit.shoppingcartbackend.domain.Product;
 import com.niit.shoppingcartbackend.domain.Supplier;
+import com.niit.shoppingcartbackend.domain.User;
 
 
 
@@ -63,6 +64,8 @@ public class ApplicationContextConfig {
 		sessionBuilder.addAnnotatedClass(Product.class);
 		sessionBuilder.addAnnotatedClass(Supplier.class);
 		sessionBuilder.addAnnotatedClass(Category.class);
+		sessionBuilder.addAnnotatedClass(User.class);
+		sessionBuilder.addAnnotatedClass(Mycart.class);
 	
 		
 		sessionBuilder.scanPackages("com.niit.shoppingcartbackend.*");

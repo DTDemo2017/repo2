@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,14 +45,14 @@ public class UserController {
 		
 		log.info("You are login with the id "+id);
 		
-		ModelAndView mv= new ModelAndView("/Home");
+		ModelAndView mv= new ModelAndView("Home");
 				{
 			if(userDAO.validate(id, password)== true)
 			{
 				log.debug("Valid credentials");
 				
 				user= userDAO.get(id);
-				mv.addObject("message", "Welcome" +user.getName());
+				mv.addObject("message", "Welcome  " +user.getName());
 				
 				mv.addObject("categoryList", categoryDAO.list());
 				 mv.addObject("category", category);

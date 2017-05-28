@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,7 +27,7 @@ public class Category {
 	@Column(name="categorydescription")
 	private String categorydescription;
 	
-	@OneToMany(mappedBy="productcategory", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="category", fetch=FetchType.EAGER)
 	List<Product> products;
 	
 	

@@ -36,15 +36,15 @@ public class Product {
 	
 	@ManyToOne
 	@JoinColumn(name="categoryid", updatable=false, insertable=false, nullable=false)
-	private Category productcategory;
+	private Category category;
 	
 	@ManyToOne
 	@JoinColumn(name="supplierid", updatable=false, insertable=false, nullable=false)
-	private Supplier productsupplier;
+	private Supplier supplier;
 	
 	
 	@Transient
-	private MultipartFile image;
+	private MultipartFile file;
 	
 	private String productimage;
 	
@@ -115,30 +115,30 @@ public class Product {
 
 	
 	
-	public Category getProductcategory() {
-		return productcategory;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setProductcategory(Category productcategory) {
-		this.productcategory = productcategory;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
-	public Supplier getProductsupplier() {
-		return productsupplier;
+	public Supplier getSupplier() {
+		return supplier;
 	}
 
-	public void setProductsupplier(Supplier productsupplier) {
-		this.productsupplier = productsupplier;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
 	
 	
-	public MultipartFile getImage() {
-		return image;
+	public MultipartFile getFile() {
+		return file;
 	}
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 	

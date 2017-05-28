@@ -25,15 +25,16 @@
 </center>
 
 
-<a href="LoginPage"><span class="glyphicon glyphicon-user"></span>Login</a>
+<a href="LoginPage"><span class="glyphicon glyphicon-log-in"></span>Login</a>
 
 
-<a href="RegistrationPage"><span class="glyphicon glyphicon-register"></span>Register</a>
+<a href="RegistrationPage"><span class="glyphicon glyphicon-user"></span>Register</a>
 <hr color="blue">
 
 <jsp:include page="Menu.jsp"></jsp:include>
 
 <hr>
+
 
 <jsp:include page="AllProducts.jsp"></jsp:include>
 
@@ -43,15 +44,18 @@
 <c:if test="${isAdmin== 'true'}">
 <jsp:include page="admin/adminHome.jsp"></jsp:include>
 </c:if>
+<hr>
 
 
 <c:if test="${isAdminClickedCategories== 'true'}">
 <jsp:include page="admin/category.jsp"></jsp:include>
 </c:if>
+<hr>
 
 <c:if test="${isAdminClickedSuppliers== 'true' }">
 <jsp:include page="admin/supplier.jsp"></jsp:include>
 </c:if>
+<hr>
 
 <c:if test="${isAdminClickedProducts== 'true' }">
 <jsp:include page="admin/product.jsp"></jsp:include>

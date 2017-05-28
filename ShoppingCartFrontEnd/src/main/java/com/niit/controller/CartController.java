@@ -67,11 +67,11 @@ public class CartController {
 		
 		}
 		log.debug("Ending of the method mycart");
-		return "/Home";
+		return "Home";
 	}
 
 	// For add and update myCart both
-	@RequestMapping(value = "/mycart/add/{productid}", method = RequestMethod.GET)
+	@RequestMapping(value = "mycart/add/{productid}", method = RequestMethod.GET)
 	public ModelAndView addToCart(@PathVariable("productid") String productid) {
 		log.debug("Starting of the method addToCart");
 		// get the product based on product id
@@ -84,11 +84,14 @@ public class CartController {
 			loggedInUserid = auth.getName();
 		}
 		mycart.setUserid(loggedInUserid);
+		mycart.setMycartid(1);
+		
 		//It is not required if you given default value while creating the table
 		mycart.setStatus('N'); // Status is New. Once it is dispatched, we can
 								// changed to 'D'
 		mycart.setQuantity(1);
 		mycart.setDateadded(newDate(System.currentTimeMillis()));
+		
 		
 		//To get sequence number, you can do programmatically in DAOImpl
 		//myCart.setId(ThreadLocalRandom.current().nextLong(100, 1000000 + 1));
@@ -113,7 +116,7 @@ public class CartController {
 	
 		// return "redirect:/views/home.jsp";
 
-		ModelAndView mv = new ModelAndView("redirect:/Home");
+		ModelAndView mv = new ModelAndView("redirect:Home");
 		mv.addObject("successMessage", " Successfuly added the product to mycart");
 		log.debug("Ending of the method addToCart");
 		return mv;

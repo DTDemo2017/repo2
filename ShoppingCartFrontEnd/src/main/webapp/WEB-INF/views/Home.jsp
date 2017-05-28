@@ -21,7 +21,7 @@
 <p style="color:blue;">${msg}</p>
 
 <center>
-<h2 style="background-color:red"> Welcome to Shopping Cart </h2>
+<h2 style="background-color:blue"> Welcome to Shopping Cart </h2>
 </center>
 
 
@@ -34,7 +34,7 @@
 <jsp:include page="Menu.jsp"></jsp:include>
 
 <hr>
-
+${supplierList}
 
 <jsp:include page="AllProducts.jsp"></jsp:include>
 

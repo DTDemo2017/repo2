@@ -59,7 +59,7 @@ public class ProductController {
 		String search_string)
 	{
 	  List<Product> products=	 productDAO.getSimilarProducts(search_string);
-	  ModelAndView mv= new ModelAndView("/Home");
+	  ModelAndView mv= new ModelAndView("product");
 	  
 	  if(products.isEmpty())
 	  {
@@ -73,7 +73,7 @@ public class ProductController {
 	  return mv;
 	
 	}
- 	@RequestMapping(value = "/manage_products", method = RequestMethod.GET)
+ 	@RequestMapping(value = "/manageProducts", method = RequestMethod.GET)
 	public String listProducts(Model model) {
 		log.debug("Starting of the method listProducts");
 		model.addAttribute("product", new Product());
@@ -84,24 +84,24 @@ public class ProductController {
 		model.addAttribute("supplierList", this.supplierDAO.list());*/
 		model.addAttribute("isAdminClickedProducts", "true");
 		log.debug("Ending of the method listProducts");
-		return "/Home";
+		return "Home";
 	}
 
 	// For add and update product both
 	@RequestMapping(value = "/manage_product_add", method = RequestMethod.POST)
 	public String addProduct(@ModelAttribute("product") Product product,
-			 @RequestParam("image") MultipartFile file, Model model) {
+			 @RequestParam("file") MultipartFile file, Model model) {
 	
 		
 		log.debug("Starting of the method addProduct");
-		Category category = categoryDAO.getCategoryByCategoryName(product.getProductcategory().getCategoryname());
+		Category category = categoryDAO.getCategoryByCategoryName(product.getCategory().getCategoryname());
 		// categoryDAO.saveOrUpdate(category); // why to save??
 
-		Supplier supplier = supplierDAO.getSupplierBySupplierName(product.getProductsupplier().getSuppliername());
+		Supplier supplier = supplierDAO.getSupplierBySupplierName(product.getSupplier().getSuppliername());
 		// supplierDAO.saveOrUpdate(supplier); // Why to save??
 
-		product.setProductcategory(category);
-		product.setProductsupplier(supplier);
+		product.setCategory(category);
+		product.setSupplier(supplier);
 
 		product.setCategoryid(category.getCategoryid());
 		product.setSupplierid(supplier.getSupplierid());
@@ -120,7 +120,7 @@ public class ProductController {
 		model.addAttribute("supplierList", this.supplierDAO.list());
 		model.addAttribute("supplier", new Supplier());
 		
-		return "/Home";
+		return "Home";
 		// return "redirect:/uploadFile";
 
 	}
@@ -130,13 +130,13 @@ public class ProductController {
 		log.debug("Starting of the method removeProduct");
 		try {
 			productDAO.delete(productid);
-			model.addAttribute("message", "Successfully Added");
+			model.addAttribute("message", "Successfully Deleted");
 		} catch (Exception e) {
 			model.addAttribute("message", e.getMessage());
 			e.printStackTrace();
 		}
 		log.debug("Ending of the method removeProduct");
-		return "forward:/manage_products";
+		return "forward:/manageProducts";
 	}
 
 	@RequestMapping("manage_product/edit/{productid}")
@@ -147,14 +147,14 @@ public class ProductController {
 		product = productDAO.get(productid);
 		model.addAttribute("selectedProduct", product);
 		log.debug(" End of the method editProduct");
-		return "forward:/manage_products";
+		return "forward:/manageProducts";
 	}
 
 	// Get select product details
 	@RequestMapping("manage_product/get/{productid}")
 	public ModelAndView getSelectedProduct(@PathVariable("productid") String productid, RedirectAttributes redirectAttributes) {
 		log.debug("Starting of the method getSelectedProduct");
-		ModelAndView mv = new ModelAndView("redirect:/");
+		ModelAndView mv = new ModelAndView("redirect:/manageProducts");
 		redirectAttributes.addFlashAttribute("selectedProduct",  productDAO.get(productid));
 		log.debug("Ending of the method getSelectedProduct");
 		return mv;

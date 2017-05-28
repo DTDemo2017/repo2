@@ -14,7 +14,7 @@
 <c:forEach var="product" items="${productList }">
 <tr>
 <td>
-<img alt="${product.productname}" src="resources/images/${product.productid}.JPG">
+<img alt="${product.productname}" src="resources/img/${product.productid}.JPG">
 </td>
 <td>
 <a href="mycart/add/${product.productid}">Add To Cart</a>

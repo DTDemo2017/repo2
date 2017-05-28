@@ -25,7 +25,7 @@
 
 <h2>Update the Categories</h2>
 <div id="Update Category">
-<form action="manage_category_update" method="post">
+<form action="manage_category_update" method="get">
 <input type="text" name="categoryid" value="${selectedCategory.categoryid}">
 <input type="text" name="categoryname" value="${selectedCategory.categoryname}">
 <input type="text" name="categorydescription" value="${selectedCategory.categorydescription}">
@@ -43,10 +43,10 @@
 <table border="2">
 <thead>
 <tr>
-<td> Category ID</td>
+<td> Category ID </td>
 <td> Category Name </td>
 <td> Category Description </td>
-<td> Action </td>
+<td colspan="3"> Action </td>
 </tr>
 </thead>
 <c:forEach var="category" items="${categoryList}">
