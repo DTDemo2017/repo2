@@ -65,9 +65,9 @@ public class BlogTestCase {
 		
 		
 		//Change value of a column in Blog
-		/*Blog blog=blogDAO.getBlog(1002);
+		/*Blog blog1=blogDAO.getBlog(1002);
 		blog.setStatus("APPROVE");
-		blogDAO.insertBlog(blog);
+		blogDAO.insertBlog(blog1);
 		System.out.println("Blog Updated");*/
 		
 		

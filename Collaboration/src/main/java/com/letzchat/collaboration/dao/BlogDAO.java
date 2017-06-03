@@ -32,7 +32,7 @@ public class BlogDAO
 		sessionFactory.getCurrentSession().saveOrUpdate(blog);
 	}
 
-	/*@Transactional
+	@Transactional
 	public List <Blog> getAllBlogs()
 	{
 		Session session=sessionFactory.openSession();
@@ -42,23 +42,23 @@ public class BlogDAO
 		
 		return blogs;
 		
-	}*/
+	}
 	
-	/*@Transactional
+	@Transactional
 	public void deleteBlog(int blogid)
 	{
 		Blog blog=(Blog)sessionFactory.getCurrentSession().get(Blog.class, blogid);
 		sessionFactory.getCurrentSession().delete(blog);
-	}*/
+	}
 	
-	/*@Transactional
+	@Transactional
 	public Blog getBlog(int blogid)
 	{
 		Session session=sessionFactory.openSession();
 		Blog blog=(Blog)session.get(Blog.class,  blogid);
 		session.close();
 		return blog;
-	}*/
+	}
 
 	
 }

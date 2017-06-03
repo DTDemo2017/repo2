@@ -30,7 +30,7 @@ public BlogCommentDAO(){}
 		sessionFactory.getCurrentSession().saveOrUpdate(blogcomment);
 	}
 
-	/*@Transactional
+	@Transactional
 	public List <BlogComment> getAllBlogComments()
 	{
 		Session session=sessionFactory.openSession();
@@ -40,24 +40,24 @@ public BlogCommentDAO(){}
 		
 		return blogcomments;
 		
-	}*/
+	}
 	
-	/*@Transactional
+	@Transactional
 	public void deleteBlogComment(int id)
 	{
 		BlogComment blogcomment=(BlogComment)sessionFactory.getCurrentSession().get(BlogComment.class, id);
 		sessionFactory.getCurrentSession().delete(blogcomment);
-	}*/
+	}
 	
 	
-	/*@Transactional
+	@Transactional
 	public BlogComment getBlogComment(int id)
 	{
 		Session session=sessionFactory.openSession();
 		BlogComment blogcomment=(BlogComment)session.get(BlogComment.class,  id);
 		session.close();
 		return blogcomment;
-	}*/
+	}
 
 	
 
