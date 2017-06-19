@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="usersform">Add User</a>  
-<a href="viewusers">View Users</a>  
+hkvhkgh
 </body>
 </html>

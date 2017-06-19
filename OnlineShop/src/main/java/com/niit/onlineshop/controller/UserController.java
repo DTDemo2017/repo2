@@ -34,16 +34,38 @@ public class UserController {
 	 
 	@RequestMapping(value="/saveUser",method = RequestMethod.POST)  
     public ModelAndView save(@ModelAttribute("user") User user){  
+		
+		String s1=user.getPassword();
+		String s2=user.getConfirmPassword();
+		
+		
+		if(s1.compareTo(s2)!=0)
+			
+		{
+			ModelAndView mv= new ModelAndView("usersform");
+			mv.addObject("command", user);
+			mv.addObject("error","Password and confirm password do not match");
+			return mv;
+			
+		}
 		Cart c=new Cart();
 		cartDao.saveOrUpdate(c);
 		System.out.println("cart id "+c.getCartId());
 		user.setCart(c);
-    	usersDao.addUsers(user);
+		ModelAndView mv= new ModelAndView("home");
+    	if(usersDao.addUsers(user))
+    	{
     	c.setUser(user);
     	cartDao.saveOrUpdate(c);
+    	mv.addObject("msg1","You have successfully registered.");
+    	}
+    	else
+    	{
+    		mv.addObject("errormsg","Registration Failed !!!!.");
+    	}
         //return new ModelAndView("redirect:/home");//will redirect to loginPage request mapping  
-    	ModelAndView mv= new ModelAndView("home");
-        mv.addObject("msg1","You have successfully registered.");
+    	
+        
         return mv;
     }  
     

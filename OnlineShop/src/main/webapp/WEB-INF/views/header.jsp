@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="#">Online Shop</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -29,9 +29,15 @@
              </c:forEach>
           </ul>
         </li>
+        <li><a href="${pageContext.request.contextPath}/AboutUs">About Us</a></li>
+        
+        <li><a href="${pageContext.request.contextPath}/ContactUs">Contact Us</a></li>
+        
+         <li><a href="${pageContext.request.contextPath}/viewproducts1">All Products</a></li> 
+        
         <security:authorize access="hasRole('ROLE_ADMIN')">
         <li><a href="${pageContext.request.contextPath}/viewproducts">Manage Product</a></li>
-        <!-- <li><a href="${pageContext.request.contextPath}/viewcategories">Manage Category</a></li> -->
+        <!--  <li><a href="${pageContext.request.contextPath}/viewcategories">Manage Category</a></li>  -->
         </security:authorize>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -44,7 +50,12 @@
       </c:if>
       <c:if test="${pageContext.request.userPrincipal.name!=null}">
         
-        <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        
+        <li><a class="navbar-brand">Welcome ${pageContext.request.userPrincipal.name}</a></li>
+        
+        <li><a href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        
+        
       </c:if>
 
       </ul>

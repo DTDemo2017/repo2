@@ -15,6 +15,8 @@ public class Billing implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int billingId;
 	
+	private String billingName;
+	
 	private double billingAmount;
 	
 	private String billingAddress;
@@ -34,6 +36,20 @@ public class Billing implements Serializable {
 		this.billingId = billingId;
 	}
 
+	
+	
+
+	
+	public String getBillingName() {
+		return billingName;
+	}
+
+	public void setBillingName(String billingName) {
+		this.billingName = billingName;
+	}
+
+	
+	
 	
 	
 	public double getBillingAmount() {

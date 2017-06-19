@@ -1,5 +1,7 @@
 package com.niit.onlineshop.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 
@@ -8,13 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.onlineshop.dao.CategoryDao;
 import com.niit.onlineshop.dao.ProductDao;
 import com.niit.onlineshop.dao.UserDao;
-import com.niit.onlineshop.model.User;
+import com.niit.onlineshop.model.Product;
 
 
 
@@ -31,6 +32,14 @@ public class HomeController {
 		 ModelAndView mv= new ModelAndView("home");
 		 mv.addObject("msg", "Thank you for visiting Online Shop..");
 		 
+		 session.setAttribute("categoryList", categoryDao.list());
+		 mv.addObject("categoryList", categoryDao.list());
+	        return mv;  
+	    } 
+	 
+	 @RequestMapping("/")  
+	    public ModelAndView home1(HttpSession session){  
+		 ModelAndView mv= new ModelAndView("home");
 		 session.setAttribute("categoryList", categoryDao.list());
 		 mv.addObject("categoryList", categoryDao.list());
 	        return mv;  
@@ -63,14 +72,45 @@ public class HomeController {
 	        return mv;  
 	    } 
 	 
+	 
+	 
+	 
+	 
+	 @RequestMapping("/viewproducts1")  
+	   public ModelAndView viewproducts1(){  
+	       List<Product> list=productDao.getAllProducts();
+	       return new ModelAndView("viewproducts1","list",list);  
+	   } 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-		public ModelAndView loginPage() {
+	 public ModelAndView loginPage() 
+	 {
 
-			return new ModelAndView("loginPage");
+		 return new ModelAndView("loginPage");
 		}
 
-
+	 @RequestMapping("/AboutUs")  
+	    public ModelAndView AboutUs(){  
+	        return new ModelAndView("AboutUs");  
+	    } 
 	 
+	 @RequestMapping("/ContactUs")  
+	    public ModelAndView ContactUs(){  
+	        return new ModelAndView("ContactUs");  
+	    } 
 	 
+	 @RequestMapping("/OnlineShop")  
+	    public ModelAndView home(){  
+	        return new ModelAndView("home");  
+	    } 
 	 
 }

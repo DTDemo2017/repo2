@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> <!--3.2.0-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+<script src="MainApp.js"></script>
+<script src="RouteConfig.js"></script>
+<script src="C_Blog/BlogController.js"></script>
+</head>
+<body ng-app="myApp">
+
+
+<nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+   
+
+ <div class="navbar-header">
+      <a class="navbar-brand" href="#">Collaboration</a>
+    </div>
+    
+
+<ul class="nav navbar-nav">
+      <li class="active"><a href="#/">Home</a></li>
+      <li><a href="#/Login">Login</a></li>
+      <li><a href="#/Register">Register</a></li>   //#!/#%2FRegister
+      <li><a href="#/Blog">Blog</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    
+
+      <div class="nav navbar-nav navbar-right">
+      <a href="#">Sign In</a>
+      </div>
+      
+  </div>
+</nav>
+
+
+<div class="container">
+          <div ng-view>
+
+
+
+          </div>
+</div>
+</body>
+</html>

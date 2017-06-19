@@ -13,7 +13,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-   <body>
+   <body style="background-color:pink;">
    <%@ include file="header.jsp" %>   
      
    <a href="productsform">Add New Products</a>
@@ -29,7 +29,7 @@
      
   <td><img src="${pageContext.request.contextPath}/${product.productImage}" height="50" width="50"></td>
    <td><a href="editproducts/${product.productId}">Edit</a></td>  
-   <td><a href="deleteproducts/${product.productId}">Delete</a></td>  
+   <!-- <td><a href="deleteproducts/${product.productId}">Delete</a></td> -->  
    </tr>  
    </c:forEach>  
    </table>  

@@ -74,7 +74,7 @@ public class CartController {
 			 CartItem cartItem = new CartItem();
 			 cartItem.setCart(c);
 			 cartItem.setProduct(product);
-			 cartItem.setQuantity(1);
+			 cartItem.setQuantity(1);//cartItem.getQuantity()
 			 cartItem.setSubTotal(product.getProductPrice());
 			 cartItem.setStatus("N");
 			 cartItemDao.saveOrUpdate(cartItem);  // save the cart item
@@ -96,8 +96,9 @@ public class CartController {
                                                     ///  if the item that is added already in cart , update qty and subtotal
 			if(cartItem.getProduct().getProductId()==pid)
 			{
-				cartItem.setQuantity(cartItem.getQuantity()+1);
+				cartItem.setQuantity(1);//cartItem.getQuantity()+1
 				cartItem.setSubTotal(cartItem.getSubTotal()+product.getProductPrice());
+				cartItem.setStatus("N");
 				cartItemDao.saveOrUpdate(cartItem);
 				//updateCart(cartItem);
 				session.setAttribute("cart", cartItem.getCart());
@@ -108,7 +109,7 @@ public class CartController {
 		 CartItem item = new CartItem();
 		 item.setCart(cart);
 		 item.setProduct(product);
-		 item.setQuantity(1);
+		 item.setQuantity(1);//
 		 item.setSubTotal(product.getProductPrice());
 		 item.setStatus("N");
 
@@ -130,17 +131,19 @@ public class CartController {
 		 
 		 ModelAndView mv= new ModelAndView("cart");
 		 Cart cart= (Cart) session.getAttribute("cart");
+		 int cartId=cart.getCartId();
 		 if(cart==null)
 		 {
 			 mv.addObject("errMsg", "No Items in Cart");
 		 }
 		 else
 		 {
-			 mv.addObject("cartContent", cart.getCartItems());
+			 mv.addObject("cartContent", cartDao.getCartItemsByCartId(cartId));
 			
 		 }
 		 return mv;
 	 }
+	 
 	 
 	@RequestMapping("/deleteItems/{cartItemId}")
 		public String removeCartItems(@PathVariable("cartItemId") Integer cartItemId, Model model, Principal username) {

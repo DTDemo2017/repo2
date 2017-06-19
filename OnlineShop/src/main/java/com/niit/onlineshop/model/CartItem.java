@@ -72,7 +72,7 @@ public class CartItem implements Serializable {
 		return status;
 	}
 
-	public void setStatus(String string) {
+	public void setStatus(String status) {
 		this.status = status;
 		
 	}

@@ -21,6 +21,13 @@ public class User implements Serializable {
 	@NotEmpty(message = "Please enter Password")
 	@Length(min=5 , max=5)
 	private String password;
+	@Length(min=5 , max=5)
+	private String confirmPassword;
+	private String emailId;
+	@Length(max=5)
+	private String address;
+	private String PINcode;
+	
 	private String role;
 	private boolean enabled;
 	
@@ -44,6 +51,38 @@ public class User implements Serializable {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPINcode() {
+		return PINcode;
+	}
+	public void setPINcode(String pINcode) {
+		PINcode = pINcode;
 	}
 	public String getRole() {
 		return role;

@@ -111,6 +111,7 @@ public class ProductController {
    
    
    
+   
    @RequestMapping(value="/editproducts/{id}")  
    public ModelAndView edit1(@PathVariable int id){  
 	   Product product=productDao.listByProductId(id);  

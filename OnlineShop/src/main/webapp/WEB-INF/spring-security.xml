@@ -11,7 +11,7 @@ xmlns:beans="http://www.springframework.org/schema/beans"
     <http use-expressions="true">
         <csrf disabled="true"/>
          
-        <intercept-url pattern="/" access="isAnonymous()" />
+         <intercept-url pattern="/" access="isAnonymous()" /> 
         <intercept-url pattern="/index" access="isAnonymous()" />
         <intercept-url pattern="/showproducts" access="isAnonymous()" />
         <intercept-url pattern="/contact" access="isAnonymous()" />

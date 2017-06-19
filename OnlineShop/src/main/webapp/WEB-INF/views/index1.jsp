@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color:pink;">
 <a href="productsform">Add Product</a>  
 <a href="viewproducts">View Products</a>  
 </body>

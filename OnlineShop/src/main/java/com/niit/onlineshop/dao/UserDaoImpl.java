@@ -2,6 +2,7 @@ package com.niit.onlineshop.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -26,8 +27,11 @@ public class UserDaoImpl implements UserDao {
 		return sessionFactory.openSession();
 	}
     @Transactional
-	public void addUsers(User users) {
+	public boolean addUsers(User users) {
 		// TODO Auto-generated method stub
+    	
+    	try
+    	{
 		Session session = getSession();
 
 		String s = users.getName();
@@ -41,8 +45,16 @@ public class UserDaoImpl implements UserDao {
 		session.flush();
 
 		session.close();
+		return true;
+    	}
+    	
+    	catch(Exception e)
+    	{
+    		System.out.println("failed ......");
+    		return false;
+    	}
 
-	}
+	} 
     @Transactional
 	public User listById(String Id) {
 		Session session = getSession();

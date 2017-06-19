@@ -5,7 +5,7 @@ import java.util.List;
 import com.niit.onlineshop.model.User;
 
 public interface UserDao {
-	public void addUsers(User users);
+	public boolean addUsers(User users);
 
 	public User listById(String Id);
 	
@@ -15,6 +15,8 @@ public interface UserDao {
 	
 	//3)validate the credentials -validate
 		public boolean validate(String id, String password);
+
+		
 		
 
 }
