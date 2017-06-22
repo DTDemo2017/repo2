@@ -96,7 +96,7 @@ public class CartController {
                                                     ///  if the item that is added already in cart , update qty and subtotal
 			if(cartItem.getProduct().getProductId()==pid)
 			{
-				cartItem.setQuantity(1);//cartItem.getQuantity()+1
+				cartItem.setQuantity(cartItem.getQuantity()+1);//cartItem.getQuantity()+1
 				cartItem.setSubTotal(cartItem.getSubTotal()+product.getProductPrice());
 				cartItem.setStatus("N");
 				cartItemDao.saveOrUpdate(cartItem);

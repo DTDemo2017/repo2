@@ -1,0 +1,28 @@
+
+<html>
+
+<body ng-app="myApp"  ng-controller="JobController ">
+{{message}}  <br>
+
+{{job.id}} <br>
+{{job.title}} <br>
+{{job.qualification}}
+
+<hr>
+{{jobsdetails}}  <br>
+<div ng-repeat="job in jobs">
+
+{{job.id}} &nbsp; &nbsp;
+{{job.title}} &nbsp; &nbsp;
+{{job.qualification}} <br>
+
+</div>
+
+
+
+</body>
+<script src="../lib/angular.js"></script>
+<script src="../app.js"></script>
+<script src="JobController.js"></script>
+
+</html>

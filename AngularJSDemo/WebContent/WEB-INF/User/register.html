@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+
+<body ng-app="myApp" ng-controller="UserController">
+{{msg}}
+
+<input type="text" ng-model="user.id"> <br>
+<input type="text" ng-model="user.name"> <br>
+<input type="password" ng-model="user.password"> 
+
+<input type="button" ng-click="register()" value="Register">
+
+
+</body>
+<!-- <script src="../lib/angular.js"></script> -->
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="../app.js"></script>
+<script src="UserController.js"></script>
+<script src="UserService.js"></script>
+</html>
