@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.collaborationplatform.dao.BlogDAO;
 import com.niit.collaborationplatform.model.Blog;
+import com.niit.collaborationplatform.model.Users;
 
 @RestController
 public class BlogController {
@@ -53,12 +54,17 @@ public class BlogController {
 	public ResponseEntity<Blog> saveBlog(@RequestBody Blog blog, HttpSession session) {
 		log.debug("**********Starting of saveBlog() method.");
 		
+		Users loggedInUser = (Users)session.getAttribute("loggedInUser");
+		blog.setUserId(loggedInUser.getId());
+		blog.setUserName(loggedInUser.getName());
+		
 		{
 			
-			blog.setUserId("U001");
+			//blog.setUserId("U1");//
 			blog.setCountLike(3);
 			blog.setStatus("N");
 			blog.setPostDate(new Date());
+			//blog.setUserName("Ashwini");//
 			blogDAO.save(blog);
 			log.debug("**********End of saveBlog() method.");
 			return new ResponseEntity<Blog>(blog, HttpStatus.OK);
@@ -86,7 +92,8 @@ public class BlogController {
 			//else
 		{
 				Blog blog1=blogDAO.get(id);
-				blog1.setContent(blog.getContent());
+				blog1.setStatus(blog.getStatus());
+				//blog1.setContent(blog.getContent());
 				blogDAO.update(blog1);
 				log.debug("**********End of updateBlog() method.");
 			return new ResponseEntity<Blog>(blog1, HttpStatus.OK);
@@ -143,14 +150,15 @@ public class BlogController {
 	 * @return
 	 */
 	@PutMapping(value = "/approveBlog/{id}")				
-	public ResponseEntity<Blog> approveBlog(@RequestBody Blog blog, @PathVariable("id") int id) {
+	public ResponseEntity<Blog> approveBlog( @PathVariable("id") int id,@RequestBody Blog blog) {
 		log.debug("**********Starting of approveBlog() method.");
-		
-		blog.setStatus("A");	// A = Accept, R = Reject, N = New
-		blogDAO.update(blog);
+		Blog blog1=blogDAO.get(id);
+		//blog1.setStatus(blog.getStatus());
+		  blog1.setStatus("A");	// A = Approve, R = Reject, N = New
+		blogDAO.update(blog1);
 		
 		log.debug("**********End of approveBlog() method.");
-		return new ResponseEntity<Blog> (blog, HttpStatus.OK);
+		return new ResponseEntity<Blog> (blog1, HttpStatus.OK);
 	}
 	/**
 	 * http://localhost:9500/CollaborationPlatform/rejectBlog/{id}
@@ -161,12 +169,13 @@ public class BlogController {
 	@PutMapping(value = "/rejectBlog/{id}")				
 	public ResponseEntity<Blog> rejectBlog(@PathVariable("id") int id, @RequestBody Blog blog) {
 		log.debug("**********Starting of rejectBlog() method.");
-		
-		blog.setStatus("R");	// A = Accept, R = Reject, N = New
-		blogDAO.update(blog);
+		Blog blog1=blogDAO.get(id);
+		//blog1.setStatus(blog.getStatus());
+		blog1.setStatus("R");	// A = Accept, R = Reject, N = New
+		blogDAO.update(blog1);
 		
 		log.debug("**********End of rejectBlog() method.");
-		return new ResponseEntity<Blog> (blog, HttpStatus.OK);
+		return new ResponseEntity<Blog> (blog1, HttpStatus.OK);
 	}
 	
 	/**
@@ -178,14 +187,16 @@ public class BlogController {
 	@PutMapping(value = "/likeBlog/{id}")
 	public ResponseEntity<Blog> likeBlog(@PathVariable("id") int id, @RequestBody Blog blog){
 		log.debug("**********Starting of likeBlog() method.");
-
-		int like = blog.getCountLike();
-		blog.setCountLike(like + 1);
+		Blog blog1=blogDAO.get(id);
 		
-		blogDAO.update(blog);
+		blog1.setCountLike(blog.getCountLike()+1);
+		
+		
+		
+		  blogDAO.update(blog1);
 		
 		log.debug("**********End of likeBlog() method.");
-		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+		return new ResponseEntity<Blog>(blog1, HttpStatus.OK);
 	}
 }
 

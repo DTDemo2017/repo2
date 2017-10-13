@@ -1,6 +1,5 @@
 package com.niit.collaborationplatform.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.collaborationplatform.model.Blog;
 import com.niit.collaborationplatform.model.Users;
 
 
@@ -179,21 +177,25 @@ Logger log = Logger.getLogger(UserDAOImpl.class);
 
 
 	public void setOnline(String id) {
+		log.debug("**********Starting of setOnline() method.");
 		String s = "update Users set isOnline = 'Y' where id = ? ";
 		Session session=getSession();
 		Query query = session.createQuery(s);
 		query.setString(0, id);
 		query.executeUpdate();
+		log.debug("**********End of setOnline() method.");
 		
 	}
 
 
 	public void setOffline(String id) {
+		log.debug("**********Starting of setOffline() method.");
 		String s = "update Users set isOnline = 'N' where id = ? ";
 		Session session=getSession();
 		Query query = session.createQuery(s);
 		query.setString(0, id);
 		query.executeUpdate();
+		log.debug("**********End of setOffline() method.");
 		
 	}
 

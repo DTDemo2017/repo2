@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.collaborationplatform.model.Blog;
 import com.niit.collaborationplatform.model.Friend;
 
 
@@ -59,7 +58,7 @@ Logger log = Logger.getLogger(FriendDAOImpl.class);
 			log.debug("**********Starting of save() method.");
 
 			Session session = getSession();
-			
+			friend.setFriendDate(new Date(System.currentTimeMillis()));
 			friend.setStatus("N");	
 			// N = New, R = Rejected, A = Approved 
 			
@@ -171,5 +170,38 @@ Logger log = Logger.getLogger(FriendDAOImpl.class);
 
 		return friendList;
 	}
+
+	@Transactional
+	public List<Friend> getMyFriends(String userId) {
+		log.debug("**********Starting of getMyFriends() method.");
+		String hql = "from Friend where (userId = '" + userId + "' and status = 'A') or (friendId = '" + userId + "' and status = 'A')";
+		log.debug("**********hql : " + hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>) query.list();
+		log.debug("**********End of getMyFriends() method.");
+		return list;
+	}
+
+	@Transactional
+	public List<Friend> getNewFriendRequests(String userId) {
+		log.debug("**********Starting of getNewFriendRequests() method.");
+		
+		String hql = "from Friend where (friendId = '" + userId + "' and status = 'N') or (userId = '" + userId + "' and status = 'N')";
+		log.debug("***********hql : " + hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Friend> list = (List<Friend>) query.list();
+		log.debug("**********End of getNewFriendRequests() method.");
+		return list;
+	}
+
+
+
+	
+	
+	
 
 }

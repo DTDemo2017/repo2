@@ -1,14 +1,16 @@
 package com.niit.collaborationplatform.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 
 @Entity
 
-//@Table(name = "B_USERS")
+@Table(name = "USERS")
 
 @Component
 public class Users extends BaseDomain implements Serializable {
@@ -26,6 +28,7 @@ private static final long serialVersionUID = 10L;
 	
 	private String password;
 	
+	@Email
 	private String email;
 	
 	private String role;
@@ -33,6 +36,8 @@ private static final long serialVersionUID = 10L;
 	private String status;
 	
 	private String isOnline;
+	
+	
 
 	
 	
@@ -92,6 +97,9 @@ private static final long serialVersionUID = 10L;
 	public void setIsOnline(String isOnline) {
 		this.isOnline = isOnline;
 	}
+
+	
+	
 	
 	
 

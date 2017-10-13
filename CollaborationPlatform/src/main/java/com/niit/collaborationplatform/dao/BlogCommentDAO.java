@@ -26,4 +26,16 @@ public interface BlogCommentDAO {
 		
 	
 	public List<BlogComment> getComments(int blogId);
+
+
+	public List<BlogComment> list();
+	
+	
+	public List<BlogComment> list(int blogId);
+	
+	
+	
+
+
+	
 }

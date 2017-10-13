@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 
 //@Table(name = "B_FORUMCOMMENT")
@@ -36,7 +38,13 @@ private String comments;
 
 private String userId;
 
+@JsonFormat(pattern="yyyy-MM-dd")
 private Date commentDate;
+
+private String forumName;
+
+private String userName;
+
 
 
 
@@ -77,9 +85,32 @@ public Date getCommentDate() {
 	return commentDate;
 }
 
+
+
 public void setCommentDate(Date commentDate) {
 	this.commentDate = commentDate;
 }
+
+
+
+
+public String getForumName() {
+	return forumName;
+}
+
+public void setForumName(String forumName) {
+	this.forumName = forumName;
+}
+
+public String getUserName() {
+	return userName;
+}
+
+public void setUserName(String userName) {
+	this.userName = userName;
+}
+
+
 
 
 

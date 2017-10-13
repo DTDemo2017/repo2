@@ -176,7 +176,8 @@ public class ForumDAOImpl implements ForumDAO {
 
 		return forumList;
 	}
-
+	
+	@Transactional
 	public ForumComment getComments(int id) {
 		String hql = "from ForumComment where id = ?";
 		Session session = getSession();
@@ -193,7 +194,9 @@ public class ForumDAOImpl implements ForumDAO {
 			return null;
 		}
 	}
-
+	
+	
+	@Transactional
 	public List<ForumComment> listComments(int id) {
 		
 		Session session = getSession();
@@ -202,5 +205,101 @@ public class ForumDAOImpl implements ForumDAO {
 		query.setInteger(0, id);
 		return query.list();
 	}
+	
+	@SuppressWarnings("unchecked")				//working
+	@Transactional
+	public List<ForumComment> listComment(int  forumid) {
+		log.debug("**********Starting of listComment() method.");
+		
+		String hql = " from ForumComment where forumId = "+ forumid ;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		log.debug("**********End of listComment() method.");
+		return query.list();
+	}
+
+	
+	
+    
+	
+	@Transactional
+	public boolean approve(Forum forum) {
+		try{
+			log.debug("**********Starting of approve() method.");
+
+			Session session = getSession();
+			session.update(forum);
+			session.flush();
+			session.close();
+			
+			
+			log.debug("**********End of approve() method.");
+
+			return true;
+			}catch(Exception e){
+				log.error("Error occured : " + e.getMessage());
+
+				e.printStackTrace();
+				return false;
+			}
+	}
+	
+	
+	/*@Transactional
+	public ForumComment getCountComment(int forumid) {
+		log.debug("**********Starting of getCountComment() method.");
+		String hql = "SELECT COUNT(comments) FROM forumcomment WHERE forumid= '" + forumid + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<ForumComment> list = query.list();
+		
+		if(list != null && !list.isEmpty()) {
+			log.debug("**********End of getCountComment() method.");
+			return (ForumComment) query.list();
+			//return list.get(0);
+		}
+		else {
+			return null;
+		}
+	}*/
+	
+	
+	
+	@Transactional
+	public ForumComment getComment(int forumid) {
+		String hql = "from ForumComment where forumid = ?";
+		Session session = getSession();
+		Query query = session.createQuery(hql);
+		
+		query.setInteger(0, forumid);
+		List<ForumComment> list = query.list();
+		
+		if(list != null && !list.isEmpty()) {
+			
+			return list.get(0);
+		}
+		else {
+			return null;
+		}
+	}
+
+	public Forum getCountComment(int id) {
+		log.debug("**********Starting of getCountComment() method.");
+		String hql = "countComment from Forum where id = '" + id + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Forum> list = query.list();
+		
+		if(list != null && !list.isEmpty()) {
+			log.debug("**********End of getCountComment() method.");
+			return list.get(0);
+		}
+		else {
+			return null;
+		}
+
+	}
+
 
 }

@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 
 //@Table(name = "B_BLOGCOMMENT")
@@ -34,11 +36,14 @@ private int blogId;
 
 private String comments;
 
+@JsonFormat(pattern="yyyy-MM-dd")
 private Date commentDate;
 
 private String userId;
 
 private String userName;
+
+private String blogName;
 
 
 
@@ -89,6 +94,16 @@ public String getUserName() {
 
 public void setUserName(String userName) {
 	this.userName = userName;
+}
+
+
+
+public String getBlogName() {
+	return blogName;
+}
+
+public void setBlogName(String blogName) {
+	this.blogName = blogName;
 }
 
 

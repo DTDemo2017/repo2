@@ -2,7 +2,6 @@ package com.niit.collaborationplatform.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 
@@ -34,15 +35,23 @@ private static final long serialVersionUID = 10L;
 	
 	private String description;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date postDate;
 	
 	private String userId;
 	
 	private String status;
+	
+	private String userName;
+	
+	private int CountComment;
+	
 
 	
 	
 	
+	
+
 	public int getId() {
 		return id;
 	}
@@ -81,6 +90,28 @@ private static final long serialVersionUID = 10L;
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	
+	
+	
+	public int getCountComment() {
+		return CountComment;
+	}
+
+	public void setCountComment(int countComment) {
+		CountComment = countComment;
 	}
 	
 	

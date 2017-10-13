@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.SequenceGenerator;
+import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Component
@@ -22,9 +24,9 @@ public class Blog extends BaseDomain implements Serializable {
 		 */
 	@Id
 	
-	//@SequenceGenerator(name="SEQ_GEN", sequenceName="SEQ_AUTO_BLOG_ID", allocationSize=1)
+	@SequenceGenerator(name="SEQ_GEN", sequenceName="SEQ_AUTO_BLOG_ID", allocationSize=1)
 		
-	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GEN")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_GEN")
 		
 	private int id;
 		
@@ -41,12 +43,14 @@ public class Blog extends BaseDomain implements Serializable {
 		
 		
 	//@Column(name = "post_date")
-		
+	@JsonFormat(pattern="yyyy-MM-dd")	
 	private Date postDate;
 		
 	private String status;
 	
 	private int countLike;
+	
+	private String userName;
 
 	
 	
@@ -117,8 +121,19 @@ public class Blog extends BaseDomain implements Serializable {
 	public void setCountLike(int countLike) {
 		this.countLike = countLike;
 	}
-	
-	
 
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	
+    
+	
 
 }

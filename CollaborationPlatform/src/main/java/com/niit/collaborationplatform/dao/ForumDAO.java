@@ -14,6 +14,9 @@ public interface ForumDAO {
 	
 	
 	public boolean update(Forum forum);
+	
+	
+	public boolean approve(Forum forum);
 		
 		
 	public boolean saveOrUpdate(Forum forum);
@@ -27,10 +30,18 @@ public interface ForumDAO {
 		
 	public List<Forum> list();
 		
-	
+	public ForumComment getComment(int forumid);//
 	
 	public ForumComment getComments(int id);
 	
 		
 	public List<ForumComment> listComments(int id);
+	
+	public List<ForumComment> listComment(int forumid);
+	
+	//public ForumComment getCountComment(int forumid);
+	
+	
+	public Forum getCountComment(int id);
+	
 }

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.niit.collaborationplatform.model.BlogComment;
 
 
@@ -153,5 +152,33 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 		Query q = session.createQuery(h);
 		return q.list();
 	}
+
+	public List<BlogComment> list() {
+		log.debug("**********Starting of list() method.");
+
+		Session session = getSession();
+
+		Query query = session.createQuery("from BlogComment");
+		List<BlogComment> blogcommentList = query.list();
+        session.close();
+        log.debug("**********End of list() method.");
+
+		return blogcommentList;
+	}
+
+	public List<BlogComment> list(int blogId) {
+		log.debug("**********Starting of list() method.");
+
+		Session session = getSession();
+
+		Query query = session.createQuery("from BlogComment where blogid=?");
+		List<BlogComment> blogcommentList = query.list();
+        session.close();
+        log.debug("**********End of list() method.");
+
+		return blogcommentList;
+	}
+
+	
 
 }

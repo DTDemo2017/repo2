@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.collaborationplatform.model.Blog;
 import com.niit.collaborationplatform.model.Job;
+import com.niit.collaborationplatform.model.JobApplication;
 
 
 @Repository("jobDAO")
@@ -21,6 +21,11 @@ public class JobDAOImpl implements JobDAO {
 	
 	
 Logger log = Logger.getLogger(JobDAOImpl.class);
+
+   @Autowired
+   Job job;
+   
+   @Autowired JobApplication jobApplication;
 	
 	
 	@Autowired
@@ -62,8 +67,8 @@ Logger log = Logger.getLogger(JobDAOImpl.class);
 			Session session = getSession();
 			job.setJobDate(new Date(System.currentTimeMillis()));    
 			//save current time as postDate
-			job.setStatus("N");	
-			// N = New, R = Rejected, A = Approved 
+			job.setStatus("V");	
+			//V-Vacant	F-Filled	P-Pending 
 			
 			session.save(job);
 			session.flush();
@@ -175,5 +180,87 @@ Logger log = Logger.getLogger(JobDAOImpl.class);
 
 		return jobList;
 	}
+
+
+	public List<Job> listVacantJobs() {
+		log.debug("**********Starting of listVacantJobs() method.");
+		String hql = "from Job where status = 'V'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		log.debug("**********End of listVacantJobs() method.");
+		return query.list();
+	}
+
+
+	
+	//In JobApplicationDAOImpl
+	/*public List<Job> getMyAppliedJobs(String userId) {
+		log.debug("**********Starting of getMyAppliedJobs() method.");
+		String hql = "from Job where id in (select jobId from JobApplication where userId = '" + userId + "')";
+		log.debug("******hql query : "+hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		log.debug("**********End of getMyAppliedJobs() method.");
+		return query.list();
+	}*/
+
+
+	public List<JobApplication> listJobApplications() {
+		log.debug("**********Starting of listJobApplications() method.");
+		String hql = "from JobApplication";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		log.debug("**********End of listJobApplications() method.");
+		return query.list();
+	}
+
+
+	/*public boolean applyForJob(JobApplication jobApplication) {
+		try {
+			log.debug("**********Starting of applyForJob() method.");
+                                                          
+			
+			Session session = getSession();
+            jobApplication.setStatus("A");//A=Applied, R=Rejected, C=Call for Interview
+			
+            session.save(jobApplication);
+			session.flush();
+			session.close();
+			log.debug("**********End of applyForJob() method.");
+			return true;
+		}
+                                                         catch (Exception e) {
+			log.error("Error occured : " + e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}*/
+
+
+	/*public boolean updateJobApplication(JobApplication jobApplication) {
+		try {
+			log.debug("**********Starting of updateJobApplication() method.");
+                                                          Session session = getSession();
+			session.update(jobApplication);
+			session.flush();
+			session.close();
+			
+			log.debug("**********End of updateJobApplication() method.");
+			return true;
+		} catch (Exception e) {
+			log.error("Error occured : " + e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
+	}*/
+
+
+	/*public JobApplication get(String userId, String jobId) {
+		log.debug("**********Starting of get() method.");
+		String hql = "from JobApplication where userId = '" + userId + "' and jobId = '" + jobId + "'";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		log.debug("**********End of get() method.");
+		return (JobApplication) query.list();//not done in controller
+	}*/
+	
+	
+	
 
 }

@@ -22,6 +22,17 @@ public boolean save(Blog blog);
 	
 	
 public boolean update(Blog blog);
+
+
+
+public boolean approve(Blog blog);
+
+
+
+public boolean reject(Blog blog);
+
+
+public boolean like(Blog blog);
 	
 	
 public boolean saveOrUpdate(Blog blog);

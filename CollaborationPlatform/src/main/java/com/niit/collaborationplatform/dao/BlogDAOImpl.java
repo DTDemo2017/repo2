@@ -184,4 +184,77 @@ public class BlogDAOImpl implements BlogDAO {
 		return blogList;
 	}
 
+	@Transactional
+	public boolean approve(Blog blog) {
+		try{
+			log.debug("**********Starting of approve() method.");
+
+			Session session = getSession();
+			session.update(blog);
+			session.flush();
+			session.close();
+			
+			
+			log.debug("**********End of approve() method.");
+
+			return true;
+			}catch(Exception e){
+				log.error("Error occured : " + e.getMessage());
+
+				e.printStackTrace();
+				return false;
+			}
+	}
+
+	@Transactional
+	public boolean reject(Blog blog) {
+		try{
+			log.debug("**********Starting of reject() method.");
+
+			Session session = getSession();
+			session.update(blog);
+			session.flush();
+			session.close();
+			
+			
+			log.debug("**********End of reject() method.");
+
+			return true;
+			}catch(Exception e){
+				log.error("Error occured : " + e.getMessage());
+
+				e.printStackTrace();
+				return false;
+			}
+	}
+
+	@Transactional
+	public boolean like(Blog blog) {
+		try{
+			log.debug("**********Starting of like() method.");
+
+			Session session = getSession();
+			session.update(blog);
+			session.flush();
+			session.close();
+			
+			
+			log.debug("**********End of like() method.");
+
+			return true;
+			}catch(Exception e){
+				log.error("Error occured : " + e.getMessage());
+
+				e.printStackTrace();
+				return false;
+			}
+	}
+
+
+	
+	
+
+
+	
+
 }

@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 
 //@Table(name = "B_JOB")
@@ -39,9 +41,12 @@ private static final long serialVersionUID = 10L;
 	
 	private String description;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date jobDate;
 	
 	private String status;
+	
+	private int posts;
 
 	
 	
@@ -92,6 +97,17 @@ private static final long serialVersionUID = 10L;
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	
+	
+	
+	public int getPosts() {
+		return posts;
+	}
+
+	public void setPosts(int posts) {
+		this.posts = posts;
 	}
 	
 	

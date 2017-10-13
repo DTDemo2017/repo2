@@ -26,4 +26,7 @@ public interface ForumCommentDAO {
 	
 	public List<ForumComment> getComments(int forumId);
 
+
+	public List<ForumComment> list();
+
 }

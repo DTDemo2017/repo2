@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.niit.collaborationplatform.model.BlogComment;
 import com.niit.collaborationplatform.model.ForumComment;
 
 
@@ -165,6 +164,19 @@ Logger log = Logger.getLogger(ForumCommentDAOImpl.class);
 		String h = "from ForumComment where forumId=" + "'" + forumId + "'";
 		Query q = session.createQuery(h);
 		return q.list();
+	}
+
+	public List<ForumComment> list() {
+		log.debug("**********Starting of list() method.");
+
+		Session session = getSession();
+
+		Query query = session.createQuery("from ForumComment");
+		List<ForumComment> forumcommentList = query.list();
+        session.close();
+        log.debug("**********End of list() method.");
+
+		return forumcommentList;
 	}
 
 }

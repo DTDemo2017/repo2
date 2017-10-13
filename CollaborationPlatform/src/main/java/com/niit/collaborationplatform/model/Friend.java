@@ -1,6 +1,7 @@
 package com.niit.collaborationplatform.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 
@@ -38,6 +41,14 @@ private static final long serialVersionUID = 10L;
 	private String status;
 	
 	private String isOnline;
+	
+	private String userName;
+	
+	private String friendName;
+	
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date friendDate;
 
 	
 	
@@ -80,6 +91,36 @@ private static final long serialVersionUID = 10L;
 
 	public void setIsOnline(String isOnline) {
 		this.isOnline = isOnline;
+	}
+
+	
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getFriendName() {
+		return friendName;
+	}
+
+	public void setFriendName(String friendName) {
+		this.friendName = friendName;
+	}
+
+	
+	
+	
+	public Date getFriendDate() {
+		return friendDate;
+	}
+
+	public void setFriendDate(Date friendDate) {
+		this.friendDate = friendDate;
 	}
 	
 	
