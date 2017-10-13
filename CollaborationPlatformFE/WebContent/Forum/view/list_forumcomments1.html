@@ -1,0 +1,37 @@
+<!-- selected-forum-forumcomment-view -->
+<center><h2 style="color:blue;"><u> FORUM COMMENTS </u></h2></center>
+<div class="forumcomments">
+	<div class="container">
+		<div class="forumcomment-all-grids">
+			<div ng-show="currentUser.role=='ADMIN'">
+				<div class="col-md-4 forumcomments-grid" ng-repeat="forumcomment in selectedForumComments">
+					
+					<div class="forumcomment-all">
+						<div class="forumcomment-all-sub frame">
+						    
+							
+							<p style="color:blue;"> {{forumcomment.comments}}</p>
+							<p style="color:blue;">Comment By : {{forumcomment.userName}}-{{forumcomment.userId}}</p>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div ng-hide="currentUser.role=='ADMIN'">
+				<div class="col-md-4 forumcomments-grid" ng-repeat="forumcomment in selectedForumComments">
+					<div class="forumcomment-all">
+						<div class="forumcomment-all-sub frame">
+						    
+							<p style="color:blue;"> {{forumcomment.comments}}</p>
+							<p style="color:blue;">Comment By : {{forumcomment.userName}}-{{forumcomment.userId}}</p>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>

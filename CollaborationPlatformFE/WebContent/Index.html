@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<html ng-app="myApp">
+<head>
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+  </head>
+<body ng-controller="UserController as ctrl">
+<h1 style="color:blue;"> <center><u>COLLABORATION PLATFORM</u></center></h1>
+  <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+   
+
+ <div class="navbar-header">
+      <a class="navbar-brand" href="#">Collaboration Platform</a>
+    </div>
+    
+
+<ul class="nav navbar-nav">
+      <li><a href="#">Collaboration</a></li>
+      <li><a href="#/">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/blog">BLOG</a></li>
+          <li><a href="#/new_blogs">NEW BLOGS</a></li>
+          <li><a href="#/appr_blogs">APPROVED BLOGS</a></li>
+          <li><a href="#/rej_blogs">REJECTED BLOGS</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">BlogComment <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/blogcomment">BLOG COMMENT</a></li>
+          <li><a href="#/blogcomments">BLOG COMMENTS</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Forum <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/forum">FORUM</a></li>
+          <li><a href="#/forums">FORUMS</a></li>
+          <li><a href="#/forums_by_another_method">FORUMS BY ANOTHER METHOD</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">ForumComment <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/forumcomment">FORUM COMMENT</a></li>
+          <li><a href="#/forumcomments">FORUM COMMENTS</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Friend <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+          <li><a href="#/friends">FRIENDS</a></li>
+          <li><a href="#/new_requests/">NEW REQUESTS</a></li>
+          <li><a href="#/friends_list/">FRIENDS LIST</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Job <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#/job">JOB</a></li>
+          <li><a href="#/jobs">JOBS</a></li>
+          <li><a href="#/vacantjobs">VACANCIES</a></li>
+          <li><a href="#/all_appliedjobs">ALL JOB APPLICATIONS</a></li>
+          <li><a href="#/my_appliedjobs">MY JOB APPLICATIONS</a></li>
+          <li><a href="#/change_status_of_appliedjobs">CHANGE STATUS OF JOB APPLICATIONS</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">User <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+          <li><a href="#/users">USERS</a></li>
+          <li><a href="#/myProfile">MY PROFILE</a></li>
+          
+        </ul>
+      </li>
+      
+      <li><a href="#/about_us">About Us</a></li>
+      <li><a href="#/contact_us">Contact Us</a></li>
+      
+      
+</ul>
+<div class="nav navbar-nav navbar-right">
+<li   ng-show="currentUser!=''" class="navbar-brand">  Welcome {{currentUser.id}}-{{currentUser.name}} </li>
+
+<li ng-show="currentUser.role!='ADMIN' && currentUser.role!='Student '"><a href="#/user" ng-show="!$curen.isUserLoggedIn">New User?</a></li>
+<li ng-show="currentUser.role!='ADMIN' && currentUser.role!='Student '"><a href="#/user/login" ng-show="!$curen.isUserLoggedIn">Login</a></li> 
+<li ng-show="currentUser.role=='ADMIN' || currentUser.role=='Student '"><a href ="#/user/logout" ng-click="ctrl.logout()">Logout</a></li>
+
+      </div>       
+
+      
+      
+  </div>
+</nav>
+	
+
+
+	<hr>
+	<div ng-view></div>
+
+
+</body>
+ 
+
+
+<script src="resources/js/app.js"></script>
+<script src="Blog/js/HomeController.js"></script>
+<script src="Blog/js/BlogService.js"></script>
+<script src="Blog/js/BlogController.js"></script>
+
+
+<script src="BlogComment/js/BlogCommentService.js"></script>
+<script src="BlogComment/js/BlogCommentController.js"></script>
+
+
+<script src="Forum/js/ForumService.js"></script>
+<script src="Forum/js/ForumController.js"></script>
+
+
+<script src="ForumComment/js/ForumCommentService.js"></script>
+<script src="ForumComment/js/ForumCommentController.js"></script>
+
+
+<script src="Job/js/JobService.js"></script>
+<script src="Job/js/JobController.js"></script>
+
+
+<script src="Friend/js/FriendService.js"></script>
+<script src="Friend/js/FriendController.js"></script>
+
+
+<script src="User/js/UserService.js"></script>
+<script src="User/js/UserController.js"></script>
+
+
+
+
+
+
+
+<hr>
+
+
+<style>
+.bg-primary {
+ background-color: #000 !important;
+}
+
+.bg-circle
+{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  padding: 14px 4px;
+  color: #ececec;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.bg-circle-outline
+{
+  width: 50px;
+  height: 50px;
+  color:smoke;
+  padding: 8px 2px;
+  border: 2px solid;
+  border-color: smoke;
+  border-radius: 50%;
+}
+
+
+.bg-circle a, a:hover, .media a:focus
+{
+  text-decoration: none !important;
+  outline: none;
+  color: #ececec;
+}
+.bg-circle-outline a, a:hover, .media a:focus
+{
+  text-decoration: none !important;
+  outline: none;
+  color: #ececec;
+}
+
+
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<footer>
+
+<footer class="mt-5">
+  <div class="container-fluid bg-faded mt-5">
+    <div class="container">
+      <div class="row py-3">
+        <!-- footer column 1 start -->
+        <div class="col-md-4">
+          <!-- row start -->
+          <div class="row py-2">
+            <div class="col-sm-3 hidden-md-down">
+              <a class="bg-circle bg-info" href="https://twitter.com/ ">
+                <i class="fa fa-2x fa-fw fa-twitter" aria-hidden="true "></i>
+              </a>
+            </div>
+            <div class="col-sm-9">
+              <h4>Tweets</h4>
+              Embed here?
+            </div>
+          </div>
+          <!-- row end -->
+        </div>
+        <!-- footer column 1 end -->
+        <!-- footer column 2 start -->
+        <div class="col-md-4">
+          <!-- row start -->
+          <div class="row py-2">
+            <div class="col-sm-3 hidden-md-down">
+              <a class="bg-circle bg-info" href="#/contact_us">
+                <i class="fa fa-2x fa-fw fa-address-card" aria-hidden="true "></i>
+              </a>
+            </div>
+            <div class="col-sm-9">
+              <h4>Contact us</h4>
+              <p>Why not?</p>
+            </div>
+          </div>
+          <!-- row end -->
+          <!-- row start -->
+          <div class="row py-2">
+            <div class="col-sm-3 hidden-md-down">
+              <a class="bg-circle bg-info" href="https://en.wikipedia.org/wiki/HTTP_cookie">
+                <i class="fa fa-2x fa-fw fa-laptop" aria-hidden="true "></i>
+              </a>
+            </div>
+            <div class="col-sm-9">
+              <h4>Cookie policy</h4>
+              <p class=" ">We use <a class=" " href="/# ">cookies </a></p>
+            </div>
+          </div>
+          <!-- row end -->
+        </div>
+        <!-- footer column 2 end -->
+        <!-- footer column 3 start -->
+        <div class="col-md-4">
+          <!-- row starting  -->
+          <div class="row py-2">
+            <div class="col-sm-3 hidden-md-down">
+              <a class="bg-circle bg-danger" href="http://www.tutorialspoint.com/java/java_tutorial.pdf">
+                <i class="fa fa-2x fa-fw fa-file-pdf-o" aria-hidden="true "></i>
+              </a>
+            </div>
+            <div class="col-sm-9">
+              <h4>Download pdf</h4>
+              <p> You like print?</a></p>
+
+            </div>
+          </div>
+          <!-- row ended -->
+          <!-- row starting  -->
+          <div class="row py-2">
+            <div class="col-sm-3 hidden-md-down">
+              <a class="bg-circle bg-info" href="#/about_us">
+                <i class="fa fa-2x fa-fw fa-info" aria-hidden="true "></i>
+              </a>
+            </div>
+            <div class="col-sm-9">
+              <h4>Info</h4>
+              About us.
+            </div>
+          </div>
+          <!-- row ended -->
+        </div>
+        <!-- footer column 3 end -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid bg-primary py-3">
+    <div class="container">
+      <div class="row py-3">
+        <div class="col-md-9">
+          <p class="text-white">Thanks for visiting!!</p>
+        </div>
+        <div class="col-md-3">
+          <div class="d-inline-block">
+            <div class="bg-circle-outline d-inline-block">
+              <a href="https://www.facebook.com/ananya.senchowdhury" class="text-white"><i class="fa fa-2x fa-fw fa-facebook"></i>
+		</a>
+            </div>
+
+            <div class="bg-circle-outline d-inline-block">
+              <a href="https://twitter.com/" class="text-white">
+                <i class="fa fa-2x fa-fw fa-twitter"></i></a>
+            </div>
+
+            <div class="bg-circle-outline d-inline-block">
+              <a href="https://www.linkedin.com/in/ananya-sen-chowdhury-837675119/" class="text-white">
+                <i class="fa fa-2x fa-fw fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</footer>
+
+</html>
+</html>
